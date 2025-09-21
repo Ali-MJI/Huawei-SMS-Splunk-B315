@@ -141,7 +141,7 @@ We **love contributions**! Here’s how to get involved:
 
 ## 📥 **Download**
 
-Get the full package from [Releases](https://github.com/yourusername/SMS-Packages-B315/releases) (includes `SMS-Packages-B315.zip` for offline use).
+Get the full package from [Releases](https://github.com/Ali-MJI/SMS-Packages-B315/releases) (includes `SMS-Packages-B315.zip` for offline use).
 
 ---
 
@@ -152,8 +152,6 @@ Get the full package from [Releases](https://github.com/yourusername/SMS-Package
 ---
 
 ## 🙌 **Acknowledgments**
-
-- Powered by [xAI’s Grok](https://x.ai) for inspiration.
 - Thanks to the [`huawei-lte-api`](https://github.com/Salamek/huawei-lte-api) project for robust modem integration.
 
 ---
