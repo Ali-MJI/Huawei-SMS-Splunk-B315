@@ -2,9 +2,9 @@
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg?style=flat-square)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
-![GitHub Stars](https://img.shields.io/github/stars/yourusername/SMS-Packages-B315?style=social)
-![GitHub Issues](https://img.shields.io/github/issues/yourusername/SMS-Packages-B315?style=flat-square)
-[![Release](https://img.shields.io/github/v/release/yourusername/SMS-Packages-B315?color=green)](https://github.com/yourusername/SMS-Packages-B315/releases)
+![GitHub Stars](https://img.shields.io/github/stars/Ali-MJI/Huawei-SMS-Splunk-B315?style=social)
+![GitHub Issues](https://img.shields.io/github/issues/Ali-MJI/Huawei-SMS-Splunk-B315?style=flat-square)
+[![Release](https://img.shields.io/github/v/release/Ali-MJI/Huawei-SMS-Splunk-B315?color=green)](https://github.com/Ali-MJI/Huawei-SMS-Splunk-B315.git/releases)
 
 > **Instantly turn Splunk alerts into SMS notifications** using a Huawei B315 LTE modem with a SIM card! This Python package is **tailored for air-gapped environments**, offering **offline installation** with pre-bundled `huawei-lte-api` wheels. Perfect for **critical monitoring** in remote or secure setups.
 
