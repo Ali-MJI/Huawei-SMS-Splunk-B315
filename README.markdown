@@ -49,7 +49,7 @@
 For **air-gapped systems**:
 1. Clone or download the repository:
    ```bash
-   git clone https://github.com/yourusername/SMS-Packages-B315.git
+   git clone https://github.com/Ali-MJI/SMS-Packages-B315.git
    cd SMS-Packages-B315
    ```
 2. Move the `python-packages` folder to `/opt`:
