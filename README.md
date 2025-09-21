@@ -49,7 +49,7 @@
 For **air-gapped systems**:
 1. Clone or download the repository:
    ```bash
-   git clone https://github.com/yourusername/SMS-Packages-B315.git
+   git clone https://github.com/Ali-MJI/Huawei-SMS-Splunk-B315.git
    cd SMS-Packages-B315
    ```
 2. Move the `python-packages` folder to `/opt`:
@@ -133,7 +133,7 @@ pip3 install -r requirements.txt
 ## 🤝 **Contributing**
 
 We **love contributions**! Here’s how to get involved:
-- 🐛 Report bugs: Open an [Issue](https://github.com/yourusername/SMS-Packages-B315/issues).
+- 🐛 Report bugs: Open an [Issue](https://github.com/Ali-MJI/Huawei-SMS-Splunk-B315.git).
 - 💡 Suggest features/fixes: Submit a Pull Request.
 - 🌟 **Star the repo** if it saves your on-call shifts!
 
@@ -141,7 +141,7 @@ We **love contributions**! Here’s how to get involved:
 
 ## 📥 **Download**
 
-Get the full package from [Releases](https://github.com/yourusername/SMS-Packages-B315/releases) (includes `SMS-Packages-B315.zip` for offline use).
+Get the full package from [Releases](https://github.com/Ali-MJI/Huawei-SMS-Splunk-B315.git) (includes `SMS-Packages-B315.zip` for offline use).
 
 ---
 
@@ -152,8 +152,6 @@ Get the full package from [Releases](https://github.com/yourusername/SMS-Package
 ---
 
 ## 🙌 **Acknowledgments**
-
-- Powered by [xAI’s Grok](https://x.ai) for inspiration.
 - Thanks to the [`huawei-lte-api`](https://github.com/Salamek/huawei-lte-api) project for robust modem integration.
 
 ---
