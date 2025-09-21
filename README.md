@@ -17,7 +17,6 @@
 - **Offline Installation**: Uses `Toch_TO_INSTALL.py` to install dependencies from `python-packages/`.
 - **Robust & Lightweight**: Error-handled script for reliable alerting, tested on **Python 3.8+**.
 
-![SMS Success](images/sms_success.png)
 
 ---
 
