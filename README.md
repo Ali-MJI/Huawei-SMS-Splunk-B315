@@ -1,109 +1,161 @@
-Huawei B315 LTE SMS Bridge for Splunk Alerts 🚀
+# 🚀 **Huawei B315 LTE SMS Bridge for Splunk Alerts**
 
-Transform your Splunk alerts into instant SMS notifications using a Huawei B315 LTE modem with a SIM card. This Python package is designed for air-gapped environments, offering a fully offline installation with pre-bundled huawei-lte-api wheel files. Perfect for critical monitoring in remote or secure setups!
-Features
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg?style=flat-square)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+![GitHub Stars](https://img.shields.io/github/stars/yourusername/SMS-Packages-B315?style=social)
+![GitHub Issues](https://img.shields.io/github/issues/yourusername/SMS-Packages-B315?style=flat-square)
+[![Release](https://img.shields.io/github/v/release/yourusername/SMS-Packages-B315?color=green)](https://github.com/yourusername/SMS-Packages-B315/releases)
 
-Splunk Integration: Triggers SMS via Splunk's "Run a Script" Alert Action.
-Huawei B315 Support: Seamlessly connects to the modem’s HTTP API (default: 192.168.8.1).
-Offline Installation: Includes wheel files for huawei-lte-api and dependencies.
-Customizable: Easily modify send.py for tailored alerts or bulk SMS.
-Lightweight & Robust: Tested on Python 3.8+, with error handling for modem connectivity.
+> **Instantly turn Splunk alerts into SMS notifications** using a Huawei B315 LTE modem with a SIM card! This Python package is **tailored for air-gapped environments**, offering **offline installation** with pre-bundled `huawei-lte-api` wheels. Perfect for **critical monitoring** in remote or secure setups.
 
-Project Structure
-Python-package/
-├── src/
-│   └── send.py              # Main script for sending SMS
-├── wheels/                  # Offline .whl files for dependencies
-│   ├── huawei-lte-api-*.whl
-│   └── [other dependencies]
-├── install_offline.sh       # Script for offline installation
-├── requirements.txt         # Dependencies for online installation
-├── README.md               # This file
-└── LICENSE                 # MIT License
+---
 
-Prerequisites
+## ✨ **Features**
 
-Python: Version 3.8 or higher (python3 --version).
-Huawei B315 Modem: Configured with an active SIM card and accessible via IP (default: 192.168.8.1).
-Splunk Server: Set up with alerts/reports and "Run a Script" action enabled.
-Credentials: Modem admin username/password (default: admin/admin).
+- **Splunk Integration**: Triggers SMS via Splunk's *"Run a Script"* action using `SendSMS.py`.
+- **Huawei B315 Support**: Seamlessly connects to the modem’s HTTP API (**default: 192.168.8.1**).
+- **Offline Installation**: Uses `Toch_TO_INSTALL.py` to install dependencies from `python-packages/`.
+- **Robust & Lightweight**: Error-handled script for reliable alerting, tested on **Python 3.8+**.
 
-Installation
-Option 1: Offline Installation (No Internet Required)
-For air-gapped systems, use the bundled wheel files:
+![SMS Success](images/sms_success.png)
 
-Clone or download the repository:git clone https://github.com/yourusername/huawei-sms-splunk-b315.git
-cd huawei-sms-splunk-b315
+---
 
+## 📂 **Project Structure**
 
-Run the offline installer:chmod +x Python-package/install_offline.sh
-./Python-package/install_offline.sh
+| File/Folder            | Description                              |
+|------------------------|------------------------------------------|
+| `python-packages/`     | Offline `.whl` files (`huawei-lte-api`, etc.) |
+| `SendSMS.py`           | Main script for sending SMS              |
+| `Toch_TO_INSTALL.py`   | Script for offline dependency installation |
+| `ReDMe`                | Basic setup instructions                 |
+| `requirements.txt`     | Dependencies for online install (optional) |
+| `LICENSE`              | MIT License                              |
 
-This installs huawei-lte-api and dependencies from the wheels/ folder.
+---
 
-Option 2: Online Installation (If Internet Available)
+## 🛠 **Prerequisites**
+
+- **Python**: Version **3.8 or higher** (check: `python3 --version`).
+- **Huawei B315 Modem**: Configured with an **active SIM card** and accessible via **IP** (default: `192.168.8.1`, `admin/admin`).
+- **Splunk Server**: Set up with **alerts/reports** and *"Run a Script"* action enabled.
+
+---
+
+## ⚙️ **Installation**
+
+### **Option 1: Offline Installation (No Internet Required)**
+
+For **air-gapped systems**:
+1. Clone or download the repository:
+   ```bash
+   git clone https://github.com/yourusername/SMS-Packages-B315.git
+   cd SMS-Packages-B315
+   ```
+2. Move the `python-packages` folder to `/opt`:
+   ```bash
+   mv python-packages /opt
+   ```
+3. Run the offline installer:
+   ```bash
+   chmod +x Toch_TO_INSTALL.py
+   ./Toch_TO_INSTALL.py
+   ```
+   > This installs `huawei-lte-api` from `/opt/python-packages/*.whl`.
+4. Verify Python version:
+   ```bash
+   python3 --version
+   ```
+
+### **Option 2: Online Installation (If Internet Available)**
+
 Install dependencies via pip:
-pip3 install -r Python-package/requirements.txt
+```bash
+pip3 install -r requirements.txt
+```
 
+> **Note**: Python 3.8+ includes `dataclasses` by default. For Python < 3.7, add the `dataclasses` wheel to `python-packages/`.
 
-Note: Python 3.8+ includes dataclasses by default. For Python < 3.7, add the dataclasses wheel to wheels/.
+---
 
-Usage
+## 🚀 **Usage**
 
-Configure Splunk:
-Create or edit an alert in Splunk.
-Add a "Run a Script" action, pointing to Python-package/src/send.py.
-Pass alert data (e.g., $result.field$) to the script.
+1. **Configure Splunk**:
+   - Create/edit an alert in Splunk.
+   - Add a *"Run a Script"* action, pointing to `SendSMS.py`.
+   - Pass alert data (e.g., `$result.field$`) as the message.
 
+2. **Edit `SendSMS.py`**:
+   - Update the **phone number**, **message**, and **modem credentials**.
+   - Example (from `SendSMS.py`):
+     ```python
+     from huawei_lte_api.Connection import Connection
+     from huawei_lte_api.Client import Client
 
-Edit send.py:
-Update modem IP, credentials, and target phone numbers.
-Example:from huawei_lte_api.Client import Client
-from huawei_lte_api.Connection import Connection
+     phone = "+1234567890"  # Your phone number
+     message = "Test alert from Splunk"  # Or Splunk alert data
+     url = 'http://admin:admin@192.168.8.1/'
 
-# Connect to Huawei B315 modem
-connection = Connection('http://192.168.8.1', username='admin', password='admin')
-client = Client(connection)
+     try:
+         with Connection(url) as connection:
+             client = Client(connection)
+             client.sms.send_sms([phone], message)
+             print(f"SMS sent successfully to {phone}: {message}")
+     except Exception as e:
+         print(f"Error sending SMS: {e}")
+         exit(1)
+     ```
 
-# Send SMS with Splunk alert
-alert_message = "Splunk Alert: Critical server error detected!"
-phone_numbers = ['+1234567890']  # Add recipient numbers
-client.sms.send_sms(phone_numbers, alert_message)
-print("SMS sent successfully!")
+3. **Test the Script**:
+   ```bash
+   python3 SendSMS.py
+   ```
 
+4. **Deploy in Splunk**: The script runs automatically when triggered by Splunk alerts.
 
+---
 
+## 🌍 **Example Use Case**
 
-Test the Script:cd Python-package/src
-python3 send.py
+> In a **remote data center** with **no internet**, a Splunk alert detects a server outage. `SendSMS.py` sends an SMS via the Huawei B315 modem to the on-call engineer, ensuring **rapid response** without network dependency.
 
+---
 
-Deploy in Splunk: The script runs automatically when triggered by Splunk alerts.
+## 🐞 **Troubleshooting**
 
-Example Use Case
-Imagine a remote data center with no internet. A Splunk alert detects a server failure. This package sends an SMS via the B315 modem to the on-call engineer, ensuring rapid response without network dependency.
-Troubleshooting
+- **Modem Connection**: Verify IP (`192.168.8.1`) and credentials. Test API in a browser: `http://192.168.8.1/api/device/information`.
+- **Splunk Script**: Ensure `SendSMS.py` is executable (`chmod +x SendSMS.py`) and in Splunk’s script path (e.g., `$SPLUNK_HOME/bin/scripts`).
+- **Dependencies**: Check `.whl` files in `/opt/python-packages/`. For Python < 3.7, add `dataclasses` wheel.
+- **Logs**: Review modem or Splunk execution logs for errors.
 
-Modem Connection Issues: Verify IP (192.168.8.1) and credentials. Test API access in a browser (e.g., http://192.168.8.1/api/device/information).
-Splunk Script Errors: Ensure send.py is executable (chmod +x send.py) and in Splunk’s script path (e.g., $SPLUNK_HOME/bin/scripts).
-Dependency Errors: Check Python version. For missing dependencies, add relevant .whl files to wheels/.
-Logs: Check modem logs or Splunk’s execution logs for errors.
+---
 
-Contributing
-We love contributions! Here's how to get involved:
+## 🤝 **Contributing**
 
-🐛 Report bugs: Open an Issue.
-💡 Suggest features or submit fixes: Create a Pull Request.
-🌟 Star the repo if it saves your on-call shifts!
+We **love contributions**! Here’s how to get involved:
+- 🐛 Report bugs: Open an [Issue](https://github.com/yourusername/SMS-Packages-B315/issues).
+- 💡 Suggest features/fixes: Submit a Pull Request.
+- 🌟 **Star the repo** if it saves your on-call shifts!
 
-Download
-Grab the full package from Releases (includes Python-package.zip for offline use).
-License
-MIT License – Free to use, modify, and distribute.
-Acknowledgments
+---
 
-Built with inspiration from xAI’s Grok.
-Thanks to the huawei-lte-api community for robust modem integration.
+## 📥 **Download**
 
+Get the full package from [Releases](https://github.com/yourusername/SMS-Packages-B315/releases) (includes `SMS-Packages-B315.zip` for offline use).
 
-Star this repo to support real-time alerting in air-gapped environments! Questions? Drop a comment or open an issue. 🚀
+---
+
+## 📜 **License**
+
+[MIT License](LICENSE) – Free to use, modify, and share.
+
+---
+
+## 🙌 **Acknowledgments**
+
+- Powered by [xAI’s Grok](https://x.ai) for inspiration.
+- Thanks to the [`huawei-lte-api`](https://github.com/Salamek/huawei-lte-api) project for robust modem integration.
+
+---
+
+**🌟 Star this repo to support offline Splunk alerting!** Got questions? Drop a comment or open an issue. 🚀
